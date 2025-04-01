@@ -1,0 +1,60 @@
+# Node.js / Next.js
+node_modules/
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+.next/
+dist/
+build/
+
+# Logs
+*.log
+*.log.*
+
+# MacOS Finder Files
+.DS_Store
+
+# Visual Studio Code workspace settings
+.vscode/
+
+# PHP
+vendor/
+*.log
+*.cache
+*.env
+
+# ML / Jupyter Notebooks (if using Python)
+*.ipynb_checkpoints
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.env
+
+# .env files for environment variables (sensitive)
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Ignore package-lock.json or yarn.lock if not needed (usually track one)
+package-lock.json
+yarn.lock
+
+# Ignore coverage folder if you have code coverage tools
+coverage/
+
+# Ignore build and output directories for other systems
+build/
+dist/
+
+# Ignore temporary files
+*.swp
+*.swo
+
+# Ignore compiled PHP files
+*.phar
+
+
+note.md
