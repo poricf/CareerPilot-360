@@ -11,10 +11,14 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Separator } from "@/components/ui/separator"
 import { useTheme } from "next-themes"
+import { authApi } from "@/lib/api"
+import { useRouter } from "next/navigation"
 
 export default function SignupPage() {
   const { theme } = useTheme()
+  const router = useRouter()
   const [isLoading, setIsLoading] = useState(false)
+  const [error, setError] = useState<string | null>(null)
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -22,15 +26,36 @@ export default function SignupPage() {
     agreeToTerms: false,
   })
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsLoading(true)
+    setError(null)
 
-    // Simulate API call
-    setTimeout(() => {
+    try {
+      const { data, error } = await authApi.register(
+        formData.email,
+        formData.password,
+        formData.name
+      )
+
+      if (error) {
+        setError(error)
+        setIsLoading(false)
+        return
+      }
+
+      if (data) {
+        // Store the token and user data
+        localStorage.setItem('token', data.token)
+        localStorage.setItem('user', JSON.stringify(data.user))
+        
+        // Redirect to the form page
+        router.push('/form')
+      }
+    } catch (err) {
+      setError('An unexpected error occurred')
       setIsLoading(false)
-      window.location.href = "/form"
-    }, 1500)
+    }
   }
 
   return (
@@ -118,6 +143,12 @@ export default function SignupPage() {
                 )}
               </Button>
             </form>
+
+            {error && (
+              <div className="mt-4 p-3 bg-destructive/10 text-destructive text-sm rounded-md">
+                {error}
+              </div>
+            )}
 
             <div className="relative my-6">
               <div className="absolute inset-0 flex items-center">
