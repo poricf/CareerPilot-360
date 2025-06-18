@@ -7,6 +7,8 @@ import { careerRoutes } from './routes/careers';
 
 dotenv.config();
 
+
+
 const app = express();
 const port = process.env.PORT || 3001;
 
@@ -25,6 +27,7 @@ app.get('/health', (req, res) => {
 });
 
 app.listen(port, () => {
+  
   console.log(`Server is running on port ${port}`);
   console.log(`API endpoints available at http://localhost:${port}`);
 }); 
