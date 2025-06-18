@@ -11,6 +11,7 @@ import { Separator } from "@/components/ui/separator"
 import { useTheme } from "next-themes"
 
 export default function LoginPage() {
+
   const { theme } = useTheme()
   const [isLoading, setIsLoading] = useState(false)
   const [formData, setFormData] = useState({
@@ -19,7 +20,7 @@ export default function LoginPage() {
     rememberMe: false,
   })
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setIsLoading(true)
 

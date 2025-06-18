@@ -233,7 +233,7 @@ export default function LandingPage() {
               <p className="text-sm text-muted-foreground mt-2">Career Paths</p>
             </div>
             <div>
-              <p className="text-3xl md:text-4xl font-bold text-primary">15K+</p>
+              <p className="text-3xl md:text-4xl font-bold text-primary">100+</p>
               <p className="text-sm text-muted-foreground mt-2">Active Users</p>
             </div>
             <div>
